@@ -5,7 +5,7 @@ import AuthStack from './AuthStack'
 import MainStack from './MainStack'
 
 const Navigator = ({ isLogin }) => {
-  return <NavigationContainer>{!isLogin ? <AuthStack /> : <MainStack />}</NavigationContainer>
+  return <NavigationContainer>{isLogin ? <AuthStack /> : <MainStack />}</NavigationContainer>
 }
 
 Navigator.propTypes = {

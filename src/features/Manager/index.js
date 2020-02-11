@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 import Proptypes from 'prop-types'
 
-class Profile extends Component {
+class Manager extends Component {
   constructor(props) {
     super(props)
     this.state = {}
@@ -11,12 +11,12 @@ class Profile extends Component {
   render() {
     return (
       <View>
-        <Text> Profile </Text>
+        <Text> Manager </Text>
       </View>
     )
   }
 }
 
-Profile.propTypes = {}
+Manager.propTypes = {}
 
-export default Profile
+export default Manager
