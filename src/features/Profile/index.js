@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
-import Proptypes from 'prop-types'
 
 class Profile extends Component {
   constructor(props) {

@@ -1,3 +1,3 @@
-export { default as I18n } from './I18n'
+export { default as i18n } from './I18n'
 
 export * from './Theme'

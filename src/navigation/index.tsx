@@ -8,7 +8,7 @@ type props = {
 }
 
 const Navigator = ({ isLogin }: props) => {
-  return <NavigationContainer>{!isLogin ? <AuthStack /> : <MainStack />}</NavigationContainer>
+  return <NavigationContainer>{isLogin ? <AuthStack /> : <MainStack />}</NavigationContainer>
 }
 
 export default Navigator
