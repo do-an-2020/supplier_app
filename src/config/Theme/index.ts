@@ -1,0 +1,7 @@
+export { default as colors } from './colors'
+export { default as sizes } from './sizes'
+export { default as fonts } from './fonts'
+export { elevation, shadowOpacity as shadowElevation } from './elevation'
+export { default as spaces } from './spaces'
+export { default as scales } from './scales'
+export { default as stylesDefault } from './Styles'

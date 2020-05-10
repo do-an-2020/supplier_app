@@ -1,6 +1,7 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "extends": [
+    "@react-native-community",
     "airbnb",
     "prettier",
     "prettier/react"
@@ -10,16 +11,17 @@
     "flowtype",
     "jsx-a11y",
     "import",
-    "prettier"
+    "prettier",
+    "@typescript-eslint"
   ],
   "rules": {
-    "camelcase": 0,
     "react/jsx-filename-extension": [
       1,
       {
         "extensions": [
           ".js",
           ".jsx",
+          ".ts",
           ".tsx"
         ]
       }
@@ -37,6 +39,7 @@
         "forbid": []
       }
     ],
+    "import/no-unresolved": "off",
     "import/extensions": [
       1,
       "never",
@@ -59,7 +62,7 @@
         "singleQuote": true,
         "printWidth": 100,
         "semi": false
-        
+
       }
     ],
     "semi": [
@@ -73,7 +76,8 @@
       }
     ],
     "react/require-default-props": [0, { "forbidDefaultForRequired": false }],
-    "global-require": 0 
+    "global-require": 0,
+    "react/jsx-props-no-spreading": 0
   },
   "env": {
     "jest": true
