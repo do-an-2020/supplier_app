@@ -1,23 +1,17 @@
-import React from 'react'
-import { View, StyleSheet, ActivityIndicator, RefreshControl } from 'react-native'
-import { NavigationProp } from 'src/config/const/navigationHelper'
-import { orderAddListByType } from 'src/redux/order/actions'
-import { colors, sizes } from 'src/config'
-import { FlatList } from 'react-native-gesture-handler'
+import React, { Component } from 'react'
+import {
+  Text,
+  View,
+  StyleSheet,
+  ActivityIndicator,
+  RefreshControl,
+  FlatList,
+  FlatListProps,
+} from 'react-native'
+import { sizes, colors } from 'src/config'
 
-import { connect } from 'react-redux'
-import { SyncFlatList } from 'src/components'
-import dataFake from '../data'
-import ItemOrder from './ItemOrder'
-import { reselect } from './reselect'
-
-type OrderItem = Record<string, any>
-
-type Props = {
-  navigation: NavigationProp<any, any, any, any, any>
-  orderStatus: number
-  name: string
-  data: OrderItem[]
+export interface IPropsSyncFlatList {
+  data?: any[]
   page?: {
     current: number
     max: number
@@ -26,37 +20,29 @@ type Props = {
   error?: string | null | undefined
 }
 
-type State = {
+export interface IStatesSyncFlatList {
   refresh: boolean
 }
 
-class Content extends SyncFlatList<Props, State> {
+// interface SyncFlatList<P = {} | IPropsSyncFlatList, S = {} | IStatesSyncFlatList>
+//   extends Component<P, S> {}
+
+abstract class SyncFlatList<
+  P extends IPropsSyncFlatList,
+  S extends IStatesSyncFlatList
+> extends Component<P & IPropsSyncFlatList, S & IStatesSyncFlatList> {
   isGetData: boolean = false
 
-  constructor(props: Props) {
+  constructor(props: IPropsSyncFlatList) {
     super(props)
     this.state = {
       refresh: false,
     }
   }
 
-  componentDidMount() {
-    this.onGetData(1, [])
-  }
-
-  // func goi api để lấy data
-  // sau khi lấy data sẽ lưu toàn bộ thông tin vào redux
-  onGetData = (page: number, oldData?: OrderItem[]) => {
-    if (this.isGetData) return
-
-    this.isGetData = true
-    // lưu thông tin vào redux
-
-    const { name } = this.props
-    this.setState({ refresh: false }, () => {
-      this.isGetData = false
-      orderAddListByType({ type: name, data: dataFake, page: { current: 1, max: 10 } })
-    })
+  onGetData = (page: number, oldData: any[]) => {
+    console.log('SyncFlatList -> onGetData -> oldData', oldData)
+    console.log('SyncFlatList -> onGetData -> page', page)
   }
 
   // khi load lại page
@@ -68,7 +54,7 @@ class Content extends SyncFlatList<Props, State> {
     })
   }
 
-  getPropsList = () => {
+  getPropsList: () => FlatListProps<any> | {} = () => {
     return {}
   }
 
@@ -92,8 +78,8 @@ class Content extends SyncFlatList<Props, State> {
     )
   }
 
-  renderItem = ({ item }: { item: OrderItem }) => {
-    return <ItemOrder item={item} />
+  renderItem = ({ item }: { item: any }) => {
+    return <Text>{item.id}</Text>
   }
 
   renderList = () => {
@@ -104,7 +90,7 @@ class Content extends SyncFlatList<Props, State> {
       <FlatList
         contentContainerStyle={styles.contentStyle}
         data={data}
-        keyExtractor={(item: OrderItem) => `${item.id}`}
+        keyExtractor={(item: any) => `${item.id}`}
         renderItem={this.renderItem}
         refreshControl={<RefreshControl refreshing={refresh} onRefresh={this.onRefresh} />}
         onEndReachedThreshold={0.2}
@@ -123,19 +109,11 @@ class Content extends SyncFlatList<Props, State> {
   }
 
   render() {
-    const { loading } = this.props
-
-    if (loading) return this.renderLoading()
-
     return this.renderList()
   }
 }
 
-const mapStateToProps = (state: any, props: Props) => {
-  return reselect(state, props)
-}
-
-export default connect(mapStateToProps)(Content)
+export default SyncFlatList
 
 const styles = StyleSheet.create({
   center: {

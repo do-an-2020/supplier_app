@@ -3,6 +3,7 @@ import { View, StyleSheet, Platform } from 'react-native'
 import { Header } from 'src/components'
 import { NavigationProp } from '@react-navigation/native'
 import { orderStatusList, orderStatus } from 'src/config/const'
+import { i18n } from 'src/config'
 import TopBar from './TopBar'
 import Screen from './Screen'
 
@@ -84,7 +85,7 @@ class Index extends PureComponent<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Header title="xin chao" />
+        <Header title={i18n.t('tab.order')} />
         {this.renderTopbar()}
         {this.renderContent()}
       </View>

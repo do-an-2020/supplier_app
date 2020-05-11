@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet } from 'react-native'
-import Proptypes from 'prop-types'
+import { Text, View } from 'react-native'
 
 class Manager extends Component {
   constructor(props) {
