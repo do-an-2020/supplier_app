@@ -4,13 +4,14 @@ import { Header, SyncFlatList } from 'src/components'
 import { i18n, sizes, colors } from 'src/config'
 import { connect } from 'react-redux'
 import { addDataListNotification } from 'src/redux/notification/actions'
+import { IPropsSyncFlatList, IStatesSyncFlatList } from 'src/components/customs/SyncFlatList'
 import dataFake from './data'
 import { reselect } from './reselect'
 import Item from './Item'
 
-type Props = {
+interface Props extends IPropsSyncFlatList {
   abc: boolean
-  loading: boolean
+  // loading: boolean
   // data: itemNotificationType[]
   page: {
     current: number
@@ -18,7 +19,7 @@ type Props = {
   }
 }
 
-type State = {
+interface State extends IStatesSyncFlatList {
   refresh: boolean
 }
 

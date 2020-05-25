@@ -27,10 +27,10 @@ export interface IStatesSyncFlatList {
 // interface SyncFlatList<P = {} | IPropsSyncFlatList, S = {} | IStatesSyncFlatList>
 //   extends Component<P, S> {}
 
-abstract class SyncFlatList<
-  P extends IPropsSyncFlatList,
-  S extends IStatesSyncFlatList
-> extends Component<P & IPropsSyncFlatList, S & IStatesSyncFlatList> {
+class SyncFlatList<P extends IPropsSyncFlatList, S extends IStatesSyncFlatList> extends Component<
+  P,
+  S
+> {
   isGetData: boolean = false
 
   constructor(props: IPropsSyncFlatList) {
