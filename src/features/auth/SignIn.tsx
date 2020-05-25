@@ -1,28 +1,20 @@
-import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { SignInScreen, IPropsSignIn, userSetAuthen } from '@dvh/user'
+import store from 'src/redux/store'
 
-type Props = {}
-
-type State = {}
-
-class SignIn extends Component<Props, State> {
-  a: Number
-
-  constructor(props: Props) {
+class SignIn extends SignInScreen {
+  constructor(props: IPropsSignIn) {
     super(props)
+    const { email } = store.getState()?.user
+
     this.state = {
-      a: '10',
+      email,
+      password: '',
     }
-    this.a = 10
   }
 
-  render() {
-    const { a } = this.state
-    return (
-      <View>
-        <Text>SignIn{a}</Text>
-      </View>
-    )
+  onSubmitSuccess = (token?: string) => {
+    const { email } = this.state
+    store.dispatch(userSetAuthen({ email, authen: token || '' }))
   }
 }
 

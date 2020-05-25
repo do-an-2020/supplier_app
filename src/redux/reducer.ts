@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux'
+import { userReducer } from '@dvh/user'
 import appInfoReducer from './appInfo/reducer'
-import userReducer from './user/reducer'
 import orderReducer from './order/reducer'
 import notificationReducer from './notification/reducer'
 
+console.log('userReducer', userReducer)
+
 const rootReducer = combineReducers({
-  user: userReducer,
+  ...userReducer,
   appInfo: appInfoReducer,
   order: orderReducer,
   notification: notificationReducer,
