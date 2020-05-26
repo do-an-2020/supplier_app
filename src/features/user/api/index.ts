@@ -22,4 +22,19 @@ export const signIn: (email: string, password: string) => Promise<IResult> = asy
   }
 }
 
+export const getAccount = async ({ authen }: { authen: string }) => {
+  try {
+    const result = await request(authen).get('/venderapp/me/account')
+    return {
+      success: true,
+      data: result.data.data,
+    }
+  } catch (error) {
+    return {
+      success: false,
+      message: '',
+    }
+  }
+}
+
 export const test = () => {}

@@ -10,6 +10,7 @@
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
+    "@dvh/chat": "link:./src/features/chatmodule",
     "@dvh/user": "link:./src/features/user",
     "@react-native-community/async-storage": "^1.9.0",
     "@react-native-community/masked-view": "^0.1.9",
@@ -29,6 +30,7 @@
     "react-native-fast-image": "^8.1.5",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-keyboard-aware-scroll-view": "^0.9.1",
+    "react-native-keyboard-input": "^6.0.1",
     "react-native-paper": "^3.8.0",
     "react-native-reanimated": "^1.8.0",
     "react-native-safe-area-context": "^0.7.3",
@@ -39,7 +41,8 @@
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
     "redux-saga": "^1.1.3",
-    "reselect": "^4.0.0"
+    "reselect": "^4.0.0",
+    "socket.io-client": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -51,6 +54,7 @@
     "@types/react-native-vector-icons": "^6.4.5",
     "@types/react-redux": "^7.1.8",
     "@types/react-test-renderer": "16.9.2",
+    "@types/socket.io-client": "^1.4.33",
     "@typescript-eslint/eslint-plugin": "2.27.0",
     "@typescript-eslint/parser": "2.27.0",
     "babel-jest": "^25.1.0",

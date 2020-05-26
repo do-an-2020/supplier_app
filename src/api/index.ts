@@ -10,7 +10,7 @@ const request = (authenToken?: string) => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: authenToken ? `${authenToken}` : '',
+      Authorization: authenToken ? `bearer ${authenToken}` : '',
       'Accept-Language': 'vi',
     },
     // baseUrl,
@@ -19,7 +19,7 @@ const request = (authenToken?: string) => {
   }
 
   return {
-    get: (url: string, options = {}) => axios.get(url, { ...defaultOptions, ...options }),
+    get: (url: string, options = {}) => axios.get(baseUrl + url, { ...defaultOptions, ...options }),
     post: (url: string, data: any, options = {}) => {
       return axios.post(baseUrl + url, data, { ...defaultOptions, ...options })
     },

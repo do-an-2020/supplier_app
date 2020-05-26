@@ -1,0 +1,10 @@
+{
+    "name": "@dvh/chat",
+    "version": "0.0.1",
+    "dependencies": {
+        "@dvh/api": "link:../../api",
+        "@dvh/commons": "link:../../commons",
+        "@dvh/components": "link:../../components",
+        "@dvh/config": "link:../../config"
+    }
+}
